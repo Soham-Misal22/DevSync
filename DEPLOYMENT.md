@@ -46,7 +46,7 @@ This guide provides a step-by-step walkthrough for deploying the DevSync project
 2. Click **Add New** -> **Project**.
 3. Import your GitHub repository.
 4. Configure the build settings:
-   - **Root Directory**: `client`
+   - **Root Directory**: `client` (Critical: Vercel must know your app is in the client folder!)
    - **Framework Preset**: `Vite`
    - **Build Command**: `npm run build`
    - **Output Directory**: `dist`

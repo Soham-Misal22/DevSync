@@ -4,7 +4,7 @@ import { AuthContext } from './context/authContext';
 import Login from './pages/login';
 import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
-import ProjectDetails from './pages/projectDetails';
+import ProjectDetails from './pages/ProjectDetails';
 import Navbar from './components/Navbar';
 import { Toaster } from 'react-hot-toast';
 
