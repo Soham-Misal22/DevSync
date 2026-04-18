@@ -13,7 +13,9 @@ const { errorHandler } = require("./middlewares/errorMiddleware");
 dotenv.config();
 connectDB();
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+    origin: process.env.CLIENT_URL || "*"
+}));
 
 app.get('/', (req, res) => {
     res.send("Hello World!");
