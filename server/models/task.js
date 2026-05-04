@@ -19,6 +19,19 @@ const taskSchema = new mongoose.Schema({
         enum: ["Low", "Medium", "High"],
         default: "Medium"
     },
+    labels: {
+        type: [String],
+        default: []
+    },
+    order: {
+        type: Number,
+        default: 0
+    },
+    type: {
+        type: String,
+        enum: ["Task", "Bug", "Epic"],
+        default: "Task"
+    },
     project:{
         type: mongoose.Schema.Types.ObjectId,
         ref: "Project",
@@ -28,6 +41,12 @@ const taskSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
         required: true
+    },
+    verification: {
+        status: { type: String, enum: ['Pending', 'Approved', 'Rejected'], default: 'Pending' },
+        verifiedBy: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+        prLink: { type: String },
+        comments: { type: String }
     }
 })
 
