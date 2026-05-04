@@ -204,8 +204,11 @@ const reorderTasks = async (req, res, next) => {
         for (const t of tasks) {
             if (t.status === 'Done') {
                 const dbTask = tasksToUpdate.find(x => x._id.toString() === t._id);
-                if (dbTask && dbTask.verification?.status !== 'Approved') {
-                    return res.status(400).json({ message: `Task "${dbTask.title}" cannot be moved to Done without Verification Approval.` });
+                // Only enforce verification if the task is actively moving into Done from another column
+                if (dbTask && dbTask.status !== 'Done') {
+                    if (dbTask.verification?.status !== 'Approved') {
+                        return res.status(400).json({ message: `Task "${dbTask.title}" cannot be moved to Done without Verification Approval.` });
+                    }
                 }
             }
         }
