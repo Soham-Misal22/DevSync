@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getProjectDetails, addMember } from '../services/projectServices';
-import { ClipboardList, ShieldCheck, Code2, Users, UserPlus } from 'lucide-react';
+import { ClipboardList, ShieldCheck, Code2, Users, UserPlus, Terminal } from 'lucide-react';
 import Vault from '../components/Vault';
 import Tasks from '../components/Tasks';
 import Snippets from '../components/Snippets';
+import LiveWorkspace from '../components/LiveWorkspace';
 import Skeleton from '../components/Skeleton';
 import toast from 'react-hot-toast';
 
@@ -70,6 +71,7 @@ const ProjectDetails = () => {
                         { id: 'tasks', label: 'Tasks', icon: <ClipboardList size={20}/> },
                         { id: 'vault', label: 'Vault', icon: <ShieldCheck size={20}/> },
                         { id: 'snippets', label: 'Snippets', icon: <Code2 size={20}/> },
+                        { id: 'live', label: 'Live Code', icon: <Terminal size={20}/> },
                     ].map(tab => (
                         <button
                             key={tab.id}
@@ -88,6 +90,7 @@ const ProjectDetails = () => {
                     {activeTab === 'tasks' && <Tasks projectId={id} members={project.members || []} />}
                     {activeTab === 'vault' && <Vault projectId={id} />}
                     {activeTab === 'snippets' && <Snippets projectId={id} />}
+                    {activeTab === 'live' && <LiveWorkspace projectId={id} />}
                 </div>
             </div>
         </div>

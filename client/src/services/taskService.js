@@ -29,3 +29,13 @@ export const editTask = async (taskId, updateData) => {
     const { data } = await API.patch(`/task/${taskId}`, updateData);
     return data;
 };
+
+export const reorderTasks = async (tasks) => {
+    const { data } = await API.patch('/task/reorder', { tasks });
+    return data;
+};
+
+export const verifyTask = async (taskId, verificationData) => {
+    const { data } = await API.post(`/task/${taskId}/verify`, verificationData);
+    return data;
+};
